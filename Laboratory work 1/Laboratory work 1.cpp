@@ -1,7 +1,5 @@
-#include <iostream>
-#include "Functions.h"
 
-using namespace std;
+#include "Functions.h"
 
 int main()
 {

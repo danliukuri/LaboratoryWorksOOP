@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.Runtime.InteropServices;
 
 namespace LaboratoryWork
 {
@@ -20,12 +17,12 @@ namespace LaboratoryWork
 
             bool exampleIsbigger1 = IsBigger(88, 88);
             bool exampleIsbigger2 = IsBigger(34, 2);
-            bool exampleIsbigger3 = IsBigger(23, 57);
+            bool exampleIsbigger3 = IsBigger(23, 57); 
         }
 
         static void Increment(ref int value)
         {
-            for (int i = 0; i < 32; i++)
+            for (int i = 0; i < Marshal.SizeOf(value)*8; i++)
             {
                 if ((value & 1 << i) == 0)
                 {
@@ -38,8 +35,9 @@ namespace LaboratoryWork
 
         static bool IsBigger(int value1, int value2)
         {
-            if ((value1 & 1 << 32 - 1) != 0 || (value2 & 1 << 32 - 1) != 0)
-                for (int i = 0; i < 32; i++)
+            int size = Marshal.SizeOf(value1) * 8;
+            if ((value1 & 1 << size - 1) != 0 || (value2 & 1 << size - 1) != 0)
+                for (int i = 0; i < size; i++)
                 {
                     if ((value1 & 1 << i) != 0 && (value2 & 1 << i) == 0)
                         return true;
@@ -47,7 +45,7 @@ namespace LaboratoryWork
                         return false;
                 }
             else
-                for (int i = 32 - 1; i >= 0; i--)
+                for (int i = size - 1; i >= 0; i--)
                 {
                     if ((value1 & 1 << i) != 0 && (value2 & 1 << i) == 0)
                         return true;
