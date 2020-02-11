@@ -1,36 +1,16 @@
 #include "Functions.h"
 
-void Increment(int &value)
+void Decrement(int &value)
 {
     for (int i = 0; i < sizeof(value) * 8; i++)
     {
-        if ((value & 1 << i) == 0)
-        {
-            value ^= 1 << i;
-            break;
-        }
         value ^= 1 << i;
+        if (!bool(value & 1 << i))
+            break;
     }
 }
 
-bool IsBigger(int value1, int value2)
+bool Equality(int value1, int value2)
 {
-    int size = sizeof(value1) * 8;
-    if ((value1 & 1 << size - 1) != 0 || (value2 & 1 << size - 1) != 0)
-        for (int i = 0; i < size; i++)
-        {
-            if ((value1 & 1 << i) != 0 && (value2 & 1 << i) == 0)
-                return true;
-            if ((value2 & 1 << i) != 0 && (value1 & 1 << i) == 0)
-                return false;
-        }
-    else
-        for (int i = size - 1; i >= 0; i--)
-        {
-            if ((value1 & 1 << i) != 0 && (value2 & 1 << i) == 0)
-                return true;
-            if ((value2 & 1 << i) != 0 && (value1 & 1 << i) == 0)
-                return false;
-        }
-    return false;
+    return !bool(value1 ^ value2);
 }

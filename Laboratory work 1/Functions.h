@@ -1,4 +1,4 @@
 #pragma once
 
-void Increment(int &value);
-bool IsBigger(int value1, int value2);
+void Decrement(int& value);
+bool Equality(int value1, int value2);

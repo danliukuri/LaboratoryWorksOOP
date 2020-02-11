@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Runtime.InteropServices;
 
 namespace LaboratoryWork
@@ -7,52 +8,32 @@ namespace LaboratoryWork
     {
         static void Main(string[] args)
         {
-            int exampleValue1 = 63;
-            int exampleValue2 = -18;
-            int exampleValue3 = 92;
+            int exampleValue1 = 16;
+            int exampleValue2 = 61;
+            int exampleValue3 = -37;
 
-            Increment(ref exampleValue1);
-            Increment(ref exampleValue2);
-            Increment(ref exampleValue3);
+            Decrement(ref exampleValue1);
+            Decrement(ref exampleValue2);
+            Decrement(ref exampleValue3);
 
-            bool exampleIsbigger1 = IsBigger(88, 88);
-            bool exampleIsbigger2 = IsBigger(34, 2);
-            bool exampleIsbigger3 = IsBigger(23, 57); 
+            bool exampleEquality1 = Equality(100, 100);
+            bool exampleEquality2 = Equality(-8, 125);
+            bool exampleEquality3 = Equality(132, 131); 
         }
 
-        static void Increment(ref int value)
+        static void Decrement(ref int value)
         {
-            for (int i = 0; i < Marshal.SizeOf(value)*8; i++)
+            for (int i = 0; i < Marshal.SizeOf(value) * 8; i++)
             {
-                if ((value & 1 << i) == 0)
-                {
-                    value ^= 1 << i;
-                    break;
-                }
                 value ^= 1 << i;
+                if (!Convert.ToBoolean(value & 1 << i))
+                    break;
             }
         }
 
-        static bool IsBigger(int value1, int value2)
+        static bool Equality(int value1, int value2)
         {
-            int size = Marshal.SizeOf(value1) * 8;
-            if ((value1 & 1 << size - 1) != 0 || (value2 & 1 << size - 1) != 0)
-                for (int i = 0; i < size; i++)
-                {
-                    if ((value1 & 1 << i) != 0 && (value2 & 1 << i) == 0)
-                        return true;
-                    if ((value2 & 1 << i) != 0 && (value1 & 1 << i) == 0)
-                        return false;
-                }
-            else
-                for (int i = size - 1; i >= 0; i--)
-                {
-                    if ((value1 & 1 << i) != 0 && (value2 & 1 << i) == 0)
-                        return true;
-                    if ((value2 & 1 << i) != 0 && (value1 & 1 << i) == 0)
-                        return false;
-                }
-            return false;
+            return !Convert.ToBoolean(value1 ^ value2);
         }
     }
 }

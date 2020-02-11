@@ -3,15 +3,15 @@
 
 int main()
 {
-    int exampleValue1 = 63;
-    int exampleValue2 = -18;
-    int exampleValue3 = 92;
+    int exampleValue1 = 16;
+    int exampleValue2 = 61;
+    int exampleValue3 = -37;
 
-    Increment(exampleValue1);
-    Increment(exampleValue2);
-    Increment(exampleValue3);
+    Decrement(exampleValue1);
+    Decrement(exampleValue2);
+    Decrement(exampleValue3);
 
-    bool exampleIsbigger1 = IsBigger(88, 88);
-    bool exampleIsbigger2 = IsBigger(34, 2);
-    bool exampleIsbigger3 = IsBigger(23, 57);
+    bool exampleEquality1 = Equality(100, 100);
+    bool exampleEquality2 = Equality(-8, 125);
+    bool exampleEquality3 = Equality(132, 131);
 }
