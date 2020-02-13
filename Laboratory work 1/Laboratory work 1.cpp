@@ -13,5 +13,5 @@ int main()
 
     bool exampleEquality1 = Equality(100, 100);
     bool exampleEquality2 = Equality(-8, 125);
-    bool exampleEquality3 = Equality(132, 131);
+    bool exampleEquality3 = Equality(131, 132);
 }

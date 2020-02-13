@@ -6,11 +6,16 @@ void Decrement(int &value)
     {
         value ^= 1 << i;
         if (!bool(value & 1 << i))
-            break;
+            i = sizeof(value) * 8;
     }
 }
 
 bool Equality(int value1, int value2)
 {
-    return !bool(value1 ^ value2);
+    for (int i = sizeof(value1) * 8; i >= 0; i++)
+    {
+        if (bool((value1 ^ 1 << i) ^ (value2 ^ 1 << i)))
+            return false;
+    }
+    return true;
 }

@@ -18,7 +18,7 @@ namespace LaboratoryWork
 
             bool exampleEquality1 = Equality(100, 100);
             bool exampleEquality2 = Equality(-8, 125);
-            bool exampleEquality3 = Equality(132, 131); 
+            bool exampleEquality3 = Equality(131, 132); 
         }
 
         static void Decrement(ref int value)
@@ -27,13 +27,19 @@ namespace LaboratoryWork
             {
                 value ^= 1 << i;
                 if (!Convert.ToBoolean(value & 1 << i))
-                    break;
+                    i = Marshal.SizeOf(value) * 8;
             }
+                
         }
 
         static bool Equality(int value1, int value2)
         {
-            return !Convert.ToBoolean(value1 ^ value2);
+            for (int i = Marshal.SizeOf(value1) * 8; i >= 0; i++)
+            {
+                if (Convert.ToBoolean((value1 ^ 1 << i) ^ (value2 ^ 1 << i)))
+                    return false;
+            }
+            return true;
         }
     }
 }
