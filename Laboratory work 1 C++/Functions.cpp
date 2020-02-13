@@ -1,6 +1,6 @@
 #include "Functions.h"
 
-void Decrement(int &value)
+void Decrement(int& value)
 {
     for (int i = 0; i < sizeof(value) * 8; i++)
     {
