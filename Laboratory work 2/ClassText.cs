@@ -3,11 +3,41 @@ namespace Laboratory_work_2
 {
     public class Str
     {
-        public char[] str;
+        private char[] str;
         public Str(char[] line)
         {
             str = new char[line.Length];
             str = line;
+        }
+        public bool ConsistSubline(char[] subline) // Перевірка чи рядок містить заданий підрядок
+        {
+            if (subline.Length > str.Length)
+                return false;
+            bool flag = false;
+            int i = 0, j = 0;
+            while (i < str.Length && j < subline.Length)
+            {
+                if (str[i] != subline[j])
+                {
+                    j--;
+                    flag = false;
+                }
+                else
+                    flag = true;
+                if (j != subline.Length - 1)
+                    flag = false;
+                i++;
+                j++;
+            }
+            return flag;
+        }
+        public void ClearStr()
+        {
+            str = null;
+        }
+        public int GetLength() // Отримання довжини рядка
+        {
+            return str.Length;
         }
         public void UppFirstLetter() // Приведення першої літери до верхнього регістру
         {
@@ -27,29 +57,10 @@ namespace Laboratory_work_2
                     }
                 }
         }
-        public bool ConsistSubline(char[] subline)
-        {
-            if (subline.Length > str.Length)
-                return false;
-            bool flag = false;
-            for (int i = 0, j = 0; i < str.Length && j < subline.Length; i++, j++)
-            {
-                if (str[i] != subline[j])
-                {
-                    j = -1;
-                    flag = false;
-                }
-                else
-                    flag = true;
-                if (j != subline.Length - 1)
-                    flag = false;
-            }
-            return flag;
-        }
     }
     public class Text
     {
-        public Str[] text;
+        private Str[] text;
         public Text(char[][] strArr)
         {
             text = new Str[strArr.Length];
@@ -88,14 +99,18 @@ namespace Laboratory_work_2
         }
         public void Clear() // Очищення тексту 
         {
+            for (int i = 0; i < text.Length; i++)
+            {
+                text[i].ClearStr();
+            }
             text = null;
         }
         public int GetMaxLength() // Отримання довжини найдовшого рядка 
         {
-            int maxLen = text[0].str.Length;
+            int maxLen = text[0].GetLength();
             for (int i = 1; i < text.Length; i++)
-                if (text[i].str.Length > maxLen)
-                    maxLen = text[i].str.Length;
+                if (text[i].GetLength() > maxLen)
+                    maxLen = text[i].GetLength();
             return maxLen;
         }
         public void UppFirstLetter() // Приведення перших літер усіх слів тексту до верхнього регістру 

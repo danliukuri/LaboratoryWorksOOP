@@ -29,12 +29,21 @@ void Str::UppFirstLetter() // Приведення першої літери до верхнього регістру
             }
         }
 }
+void Str::ClearStr()
+{
+    delete[] str;
+}
+int Str::GetLength()
+{
+    return strlen(str);
+}
 bool Str::ConsistSubline(char* subline)
 {
     if (strlen(subline) > strlen(str))
         return false;
     bool flag = false;
-    for (int i = 0, j = 0; i < strlen(str) && j < strlen(subline); i++, j++)
+    int i = 0, j = 0;
+    while (i < strlen(str) && j < strlen(subline))
     {
         if (str[i] != subline[j])
         {
@@ -45,6 +54,8 @@ bool Str::ConsistSubline(char* subline)
             flag = true;
         if (j != strlen(subline) - 1)
             flag = false;
+        i++;
+        j++;
     }
     return flag;
 }
@@ -93,15 +104,15 @@ void Text::DelLinesWithSubline(char* subline) // Видалення рядків, що містять за
 void Text::Clear() // Очищення тексту 
 {
     for (int i = 0; i < textLength; i++)
-        delete[] text[i].str;
+        text[i].ClearStr();
     delete[] text;
 } 
 int Text::GetMaxLength() // Отримання довжини найдовшого рядка 
 {
-    int maxLen = strlen(text[0].str);
+    int maxLen = text[0].GetLength();
     for (int i = 1; i < textLength; i++)
-        if (strlen(text[i].str) > maxLen)
-            maxLen = strlen(text[i].str);
+        if (text[i].GetLength() > maxLen)
+            maxLen = text[i].GetLength();
     return maxLen;
 }
 void Text::UppFirstLetter() // Приведення перших літер усіх слів тексту до верхнього регістру 
