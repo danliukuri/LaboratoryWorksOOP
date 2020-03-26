@@ -1,6 +1,5 @@
 #include "Square.h"
 #include <math.h>
-#include <iostream>
 
 Square::Square()
 {
@@ -89,6 +88,3 @@ Square Square:: operator /(Square other)
     Square newsq = Square(this->Area() / other.Area());
     return newsq;
 }
-
-
-
