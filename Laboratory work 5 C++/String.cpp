@@ -25,10 +25,6 @@ char* Str::GetString()
     return str;
 }
 
-DigitalStr::~DigitalStr()
-{
-    delete[] intStr;
-}
 DigitalStr::DigitalStr(char* line) : Str(line)
 {
     intStr = new int[this->GetLength()];
@@ -39,6 +35,10 @@ DigitalStr::DigitalStr(char* line) : Str(line)
         else
             intStr[i] = 0;
     }
+}
+DigitalStr::~DigitalStr()
+{
+    delete[] intStr;
 }
 int* DigitalStr::GetDigitStr()
 {

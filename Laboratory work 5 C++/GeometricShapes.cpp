@@ -5,11 +5,17 @@
 Triangle::Triangle(double coordinates[3][2])
 {
     this->coordinates = new double* [3];
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 3; i++)
         this->coordinates[i] = new double[2];
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 3; i++)
         for (int j = 0; j < 2; j++)
             this->coordinates[i][j] = coordinates[i][j];
+}
+Triangle::~Triangle()
+{
+    for (int i = 0; i < 3; i++)
+        delete[] coordinates[i];
+    delete[] coordinates;
 }
 double Triangle::GetArea()
 {

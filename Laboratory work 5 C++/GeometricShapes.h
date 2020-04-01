@@ -11,6 +11,7 @@ class Triangle : public Shape
 {
 public:
     Triangle(double coordinates[3][2]);
+    ~Triangle();
     double GetArea() override;
     double GetPerimeter() override;
 private:

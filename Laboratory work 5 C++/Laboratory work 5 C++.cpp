@@ -37,11 +37,13 @@ void Task1()
 void Task2()
 {
     double coord[3][2] = { { 0, 0 }, { 0, 3 }, { 4, 0 } };
-    Shape *t = &Triangle(coord);
-    double at = (*t).GetArea();
-    double pt = (*t).GetPerimeter();
+    Triangle t = Triangle(coord);
+    Shape* ptr = &t;
+    double at = (*ptr).GetArea();
+    double pt = (*ptr).GetPerimeter();
 
-    Shape* c = &Circle(3);
-    double ac = (*c).GetArea();
-    double pc = (*c).GetPerimeter();
+    Circle c = Circle(3);
+    ptr = &c;
+    double ac = (*ptr).GetArea();
+    double pc = (*ptr).GetPerimeter();
 }
