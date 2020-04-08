@@ -37,7 +37,7 @@ Circle::Circle(double radius)
 }
 double Circle::GetArea()
 {
-    return pow(radius, 2);
+    return 3.1415926535897931 * pow(radius, 2);
 }
 double Circle::GetPerimeter()
 {

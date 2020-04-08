@@ -18,20 +18,20 @@ void Task1()
     int len = s.GetLength();
     delete[] line;
 
-    char* digitLine = new char[6]{ '5', '4', '4', '1', '2', '\0' };
+    char* digitLine = new char[9]{ '1', '2', 'a', '3', 'b', 'c', '4', '5', '\0' };
     DigitalStr dS = DigitalStr(digitLine);
     len = dS.GetLength();
     delete[] digitLine;
 
     int* ds = dS.GetDigitStr();
-    for (int i = 0; i < dS.GetLength(); i++)
+    for (int i = 0; i < dS.GetDigitLength(); i++)
         cout << ds[i];
     cout << endl;
 
     dS.ReverseDigitStr();
-    int* dsRev = dS.GetDigitStr();
-    for (int i = 0; i < dS.GetLength(); i++)
-        cout << dsRev[i];
+    for (int i = 0; i < dS.GetDigitLength(); i++)
+        cout << ds[i];
+    cout << endl;
 }
 
 void Task2()

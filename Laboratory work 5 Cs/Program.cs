@@ -5,7 +5,7 @@ namespace Laboratory_work_5_Cs
     {
         static void Main(string[] args)
         {
-            Task2();
+            Task1();
         }
 
         static void Task1()
@@ -14,13 +14,12 @@ namespace Laboratory_work_5_Cs
             Str s = new Str(line);
             int len = s.GetLength();
 
-            char[] digitLine = { '5', '4', '4', '1', '2' };
+            char[] digitLine = { '1', '2', 'a', '3', 'b', 'c', '4', '5' };
             DigitalStr dS = new DigitalStr(digitLine);
-            len = dS.GetLength();
+            len = dS.GetDigitLength();
 
             int[] ds = dS.GetDigitStr();
             dS.ReverseDigitStr();
-            int[] dsRev = dS.GetDigitStr();
         }
 
         static void Task2()

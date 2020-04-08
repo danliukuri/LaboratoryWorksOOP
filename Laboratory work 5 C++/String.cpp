@@ -5,9 +5,7 @@ using namespace std;
 Str::Str(char* line)
 {
     str = new char[strlen(line) + 1];
-    str[strlen(line)] = '\0';
-    for (int i = 0; i < strlen(line); i++)
-        str[i] = line[i];
+    str = _strdup(line);
 }
 Str::~Str()
 {
@@ -27,13 +25,16 @@ char* Str::GetString()
 
 DigitalStr::DigitalStr(char* line) : Str(line)
 {
-    intStr = new int[this->GetLength()];
-    for (int i = 0; i < this->GetLength(); i++)
+    intStr = new int[GetDigitLength()];
+    int i = 0, j = 0;
+    while (j < GetLength())
     {
-        if (isdigit(str[i]))
-            intStr[i] = str[i] - '0';
-        else
-            intStr[i] = 0;
+        if (isdigit(str[j]))
+        {
+            intStr[i] = str[j] - '0';
+            i++;
+        }
+        j++;
     }
 }
 DigitalStr::~DigitalStr()
@@ -44,12 +45,20 @@ int* DigitalStr::GetDigitStr()
 {
     return intStr;
 }
+int DigitalStr::GetDigitLength()
+{
+    int len = 0;
+    for (int i = 0; i < GetLength(); i++)
+        if (isdigit(str[i]))
+            len++;
+    return len;
+}
 void DigitalStr::ReverseDigitStr()
 {
-    for (int i = 0; i < this->GetLength()/2; i++)
+    for (int i = 0; i < GetDigitLength()/2; i++)
     {
         int temp = intStr[i];
-        intStr[i] = intStr[this->GetLength() - 1 - i];
-        intStr[this->GetLength() - 1 - i] = temp;
+        intStr[i] = intStr[GetDigitLength() - 1 - i];
+        intStr[GetDigitLength() - 1 - i] = temp;
     }
 }

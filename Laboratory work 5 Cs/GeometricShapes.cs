@@ -40,7 +40,7 @@ namespace Laboratory_work_5_Cs
         }
         public override double GetArea()
         {
-            return Math.Pow(radius, 2);
+            return Math.PI * Math.Pow(radius, 2);
         }
         public override double GetPerimeter()
         {

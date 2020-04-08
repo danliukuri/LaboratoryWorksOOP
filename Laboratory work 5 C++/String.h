@@ -16,6 +16,7 @@ public:
     ~DigitalStr();
     DigitalStr(char* line);
     int* GetDigitStr();
+    int GetDigitLength();
     void ReverseDigitStr();
 private:
     int* intStr;
