@@ -4,14 +4,6 @@ namespace Laboratory_work_7
 {
     public class SinglyLinkedList
     {
-        internal Node GetLastNode()
-        {
-            Node lastNode = head;
-            while (lastNode.Next != null)
-                lastNode = lastNode.Next;
-            return lastNode;
-        }
-
         public void AddLast(float value)
         {
             Node newNode = new Node(value);
@@ -27,11 +19,11 @@ namespace Laboratory_work_7
         {
             Node previous = null;
             Node current = head;
-            if (current != null && (float)current.Data == value)
+            if (current != null && current.Data == value)
                 head = current.Next;
             else
             {
-                while (current != null && (float)current.Data != value)
+                while (current != null && current.Data != value)
                 {
                     previous = current;
                     current = current.Next;
@@ -48,7 +40,7 @@ namespace Laboratory_work_7
             Node current = head;
             while (current != null)
             {
-                if ((float)current.Data > value)
+                if (current.Data > value)
                     number++;
                 current = current.Next;
             }
@@ -59,10 +51,18 @@ namespace Laboratory_work_7
             Node current = head;
             while (current != null)
             {
-                if ((float)current.Data < value)
-                    Remove((float)current.Data);
+                if (current.Data < value)
+                    Remove(current.Data);
                 current = current.Next;
             }
+        }
+
+        internal Node GetLastNode()
+        {
+            Node lastNode = head;
+            while (lastNode.Next != null)
+                lastNode = lastNode.Next;
+            return lastNode;
         }
 
         private Node head;

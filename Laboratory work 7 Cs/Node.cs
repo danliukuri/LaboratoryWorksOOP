@@ -1,10 +1,10 @@
 ﻿namespace Laboratory_work_7
 {
-    internal class Node
+    internal sealed class Node
     {
-        internal object Data { get; }
+        internal float Data { get; }
         internal Node Next { get; set; }
-        internal Node(object value)
+        internal Node(float value)
         {
             Data = value;
             Next = null;
