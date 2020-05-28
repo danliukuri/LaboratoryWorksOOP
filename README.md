@@ -1,5 +1,3 @@
-# Laboratory-work
-# This code is contributed by
-# Yura Danyliuk
-# IS-91 FICT KPI
-# variant №2
+# Laboratory Works OOP
+Completion of the [assignments](https://github.com/yuradanyliuk/LaboratoryWorksOOP/tree/master/Assignments) on object-oriented programming. 
+Variant: 2
